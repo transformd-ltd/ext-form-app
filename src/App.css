@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  @apply h-full;
+}
+
+#root {
+  @apply min-h-full;
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  h2 {
+    @apply text-2xl font-bold;
+  }
+  h3 {
+    @apply text-xl font-bold;
+  }
+}
+
+.formatic-field-container {
+  @apply block mb-4;
+}
+.formatic-label {
+  @apply block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+}
+.formatic-field-container__field input,
+.formatic-field-container__field textarea {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+.formatic-radio-list__radio-item-label {
+  @apply leading-6;
+}
+.formatic-field-container__field .formatic-radio-list__radio-item {
+  @apply inline-block w-auto mr-2;
+}
+.formatic-button {
+  @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+}
+.bp4-callout.bp4-intent-danger {
+  @apply p-2 bg-red-100 text-red-600 break-words;
+  /*word-wrap: break-word;*/
+}
+.bp4-callout.bp4-intent-danger .bp4-heading {
+  @apply text-xl font-bold;
+}
+.formatic-error-message {
+  @apply leading-6 text-sm text-red-600;
+}
+a {
+  @apply text-blue-500 underline;
+}
+.form-input {
+  @apply w-full;
+}
+button.btn {
+  @apply text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-lg text-sm w-full sm:w-auto px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+}
+

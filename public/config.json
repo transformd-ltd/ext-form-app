@@ -1,0 +1,24 @@
+{
+  "title": "Holiday Approval",
+  "submission": [
+    {
+      "title": "Personal Details",
+      "type": "dataGrid",
+      "columns": 2,
+      "data": [
+        {"id": "firstName", "title": "First Name"},
+        {"id": "lastName", "title": "Last Name"},
+        {"id": "emailAddress", "title": "Email", "span": 2}
+      ]
+    },
+    {
+      "title": "Company Details",
+      "type": "dataGrid",
+      "columns": 2,
+      "data": [
+        {"id": "abn", "title": "ABN", "span": 2},
+        {"id": "yourLeave", "title": "Leave Date"}
+      ]
+    }
+  ]
+}

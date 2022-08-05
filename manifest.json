@@ -1,0 +1,75 @@
+{
+	"id": "com.transformd.ext-approval-example",
+	"manifest_version": 1,
+	"version": "0.0.21",
+	"name": "Example",
+	"icon": "icon.svg",
+	"environment": [
+		{
+			"key": "FORM_ID",
+			"label": "Form ID",
+			"default": null,
+			"type": "number",
+			"description": "The Unique Numeric ID of the form",
+			"is_required": true
+		},
+		{
+			"key": "API_KEY",
+			"label": "API Key",
+			"description": "API Key for this application",
+			"type": "string",
+			"is_required": true
+		},
+		{
+			"key": "BRANCH",
+			"label": "Branch",
+			"description": "Form Branch",
+			"type": "string",
+			"is_required": true
+		},
+		{
+			"key": "CHANNEL",
+			"label": "Channel",
+			"description": "Form Channel to open",
+			"default": "master",
+			"type": "string",
+			"is_required": true
+		},
+		{
+			"key": "IS_LIVE",
+			"label": "Is Live?",
+			"description": "Is this a live environment",
+			"default": true,
+			"type": "boolean"
+		}
+	],
+	"routes": {
+		"home": {
+			"name": "Home",
+			"uri": "/"
+		},
+		"complete-task": {
+			"name": "Complete Task",
+			"uri": "/complete-task/{{submission_id}}",
+			"params": {
+				"submission_id": {
+					"type": "string",
+					"location": "path"
+				}
+			}
+		}
+	},
+	"ui": {
+		"screen": {
+			"entrypoint": "index.html"
+		},
+		"navigation": {
+			"theme": {
+				"background-color": "#ffffff",
+				"color": "#222222"
+			},
+			"active": true,
+			"menu": []
+		}
+	}
+}
