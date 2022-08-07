@@ -456,6 +456,13 @@
     subscribe-ui-event "2.0.5"
     subscriptions-transport-ws "^0.8.1"
 
+"@transformd-ltd/theme-fermi@^1.0.69":
+  version "1.0.69"
+  resolved "https://npm.pkg.github.com/download/@transformd-ltd/theme-fermi/1.0.69/53cb1c14e19ed6bb8649ec92ed60bec88b3049d0#53cb1c14e19ed6bb8649ec92ed60bec88b3049d0"
+  integrity sha512-8xxbhNggsn1qz986oCMMPspNSfpcUCjl+DY/2hiBiPK3zUwlFTmNCqiuxMcBZWM3veTpViSoalrUPJMZSW+SfQ==
+  dependencies:
+    animate-sass "^0.8.2"
+
 "@types/dom4@^2.0.1":
   version "2.0.2"
   resolved "https://registry.npmjs.org/@types/dom4/-/dom4-2.0.2.tgz"
@@ -576,6 +583,11 @@ ajv@^6.10.0, ajv@^6.12.4:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
+
+animate-sass@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/animate-sass/-/animate-sass-0.8.2.tgz#fbfa76e049177d217a50b0f99c8ee77af490b7d9"
+  integrity sha512-6sZ34dusqb1HdZLNpJUNaZc0CuuLgFI8SqlyaxbSSKE9zqfoNtOeO3IpVUCqvaSm/oMNH1VlEAsJlppjg+idKQ==
 
 ansi-regex@^5.0.1:
   version "5.0.1"

@@ -1,47 +1,42 @@
 import { useEffect, useState } from "react";
-import { view } from "@transformd-ltd/sandbox-bridge";
+
 import {
   unstable_HistoryRouter as HistoryRouter,
   Routes,
-  Route,
+  Route, useParams,
 } from "react-router-dom";
+import { view } from "@transformd-ltd/sandbox-bridge";
 import PropTypes from "prop-types"
 import NotFound from "./components/NotFound";
 import "./App.css";
-import API from "./API";
-import ApprovalTaskPage from "./pages/ApprovalTaskPage";
 import HomePage from "./pages/Homepage";
+import FormEmbedPage from "./pages/FormEmbedPage";
+
+function TestPage() {
+  const params = useParams();
+  return (
+    <div>
+      <pre>{JSON.stringify(params, null, 2)}</pre>
+    </div>
+  )
+}
 
 function App(props) {
-  const [history, setHistory] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const {pat, apiUrl} = props;
-
-  useEffect(() => {
-    API.init(`${apiUrl}/v3/`, pat);
-    view.createHistory()
-      .then((newHistory) => {
-        setHistory(newHistory);
-        setIsLoaded(true);
-      });
-  }, [props.csrfToken]);
+  const { history } = props;
 
   function handleComplete() {
     view.callBridge('reload');
   }
 
   return (
-    isLoaded
-      ? (
-        <HistoryRouter history={history}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route index path="/complete-task/:submissionId" element={<ApprovalTaskPage {...props} onComplete={handleComplete} />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </HistoryRouter>
-      ) : ("Loading...")
+    <HistoryRouter history={history}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route index path="/form" element={<TestPage {...props} onComplete={handleComplete} />} />
+        <Route index path="/form/:channel/:submissionId" element={<FormEmbedPage {...props} onComplete={handleComplete} />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </HistoryRouter>
   );
 }
 

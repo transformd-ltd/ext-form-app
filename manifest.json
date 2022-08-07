@@ -1,7 +1,7 @@
 {
 	"id": "com.transformd.ext-approval-example",
 	"manifest_version": 1,
-	"version": "0.0.21",
+	"version": "0.0.25",
 	"name": "Example",
 	"icon": "icon.svg",
 	"environment": [
@@ -28,19 +28,18 @@
 			"is_required": true
 		},
 		{
-			"key": "CHANNEL",
-			"label": "Channel",
-			"description": "Form Channel to open",
-			"default": "master",
+			"key": "CHANNEL_BASIC",
+			"label": "Basic Channel",
+			"description": "Form Branch",
 			"type": "string",
 			"is_required": true
 		},
 		{
-			"key": "IS_LIVE",
-			"label": "Is Live?",
-			"description": "Is this a live environment",
-			"default": true,
-			"type": "boolean"
+			"key": "CHANNEL_ADVANCED",
+			"label": "Advanced Channel",
+			"description": "Form Branch",
+			"type": "string",
+			"is_required": true
 		}
 	],
 	"routes": {
@@ -48,13 +47,35 @@
 			"name": "Home",
 			"uri": "/"
 		},
-		"complete-task": {
-			"name": "Complete Task",
-			"uri": "/complete-task/{{submission_id}}",
+		"basic": {
+			"name": "Form",
+			"uri": "/form/{{channel}}/{{submission_id}}",
 			"params": {
+				"channel": {
+					"type": "string",
+					"location": "path",
+					"source": "env.CHANNEL_BASIC"
+				},
 				"submission_id": {
 					"type": "string",
-					"location": "path"
+					"location": "path",
+					"source" : "assignment.subject.id"
+				}
+			}
+		},
+		"advanced": {
+			"name": "Form",
+			"uri": "/form/{{channel}}/{{submission_id}}",
+			"params": {
+				"channel": {
+					"type": "string",
+					"location": "path",
+					"source": "env.CHANNEL_ADVANCED"
+				},
+				"submission_id": {
+					"type": "string",
+					"location": "path",
+					"source" : "assignment.subject.id"
 				}
 			}
 		}
@@ -69,7 +90,18 @@
 				"color": "#222222"
 			},
 			"active": true,
-			"menu": []
+			"menu": [
+				{
+					"id": "basic",
+					"route": "basic",
+					"text": "Basic"
+				},
+				{
+					"id": "advanced",
+					"route": "advanced",
+					"text": "Advanced"
+				}
+			]
 		}
 	}
 }

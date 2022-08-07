@@ -1,0 +1,34 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'features/**'
+      - 'support/**'
+      - 'bugfix/**'
+      - 'releases/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          always-auth: true
+          node-version: 16
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@transformd-ltd'
+
+      - name: Install yarn packages
+        run: yarn install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Run lint
+        run: yarn run lint
